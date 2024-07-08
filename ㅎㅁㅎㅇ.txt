@@ -1,0 +1,11 @@
+깃허브 연동 하는 방법
+ cmd에 cd \
+git init
+git add .
+git commit -m "할말"
+git > git remote add origin https://github.com/sin-seong/202407java.git
+git push -u origin master
+
+계정 연동
+git config --global user.email "이메일"
+git config --global user.name "아이디"

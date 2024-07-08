@@ -9,3 +9,5 @@ git push -u origin master
 계정 연동
 git config --global user.email "이메일"
 git config --global user.name "아이디"
+
+이클립스 프젝 생성시 모듈체크해제

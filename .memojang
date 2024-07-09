@@ -3,7 +3,7 @@
 git init
 git add .
 git commit -m "할말"
-git > git remote add origin https://github.com/sin-seong/202407java.git
+git remote add origin https://github.com/sin-seong/202407java.git
 git push -u origin master
 
 계정 연동

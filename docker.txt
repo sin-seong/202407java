@@ -1,0 +1,26 @@
+도커 명령어
+
+ docker ps -a  리스트 보기
+ docker stop 아이디 중단
+ docker rm 아이디 삭제
+ docker image ls  이미지 리스트
+ docker image rm 아이디 이미지 삭제
+
+docker run --name apa000ex2 -p 8880:80 httpd 
+           생성 이름지정 (컨테이너명)     포트     이미지이름
+컨테이너 생성
+
+docker run --name apa000ex2 -d -p 8880:80 httpd (백그라운드 추가)
+
+docker start  컨테이너명
+
+파일> 유저 > 로컬 아파치> htdocs
+
+양방향복사 가능
+docker cp apa000ex2:/usr/local/apache2/htdocs/index.html .
+docker cp index.html apa000ex2:/usr/local/apache2/htdocs
+
+docker run --name mysql000ex7 -dit -e MYSQL_ROOT_PASSWORD=1234 mysql
+mysql 컨테이너 생성
+
+접속

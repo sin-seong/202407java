@@ -24,3 +24,31 @@ docker run --name mysql000ex7 -dit -e MYSQL_ROOT_PASSWORD=1234 mysql
 mysql 컨테이너 생성
 
 접속
+docker exec -it mysql000ex7 mysql -u root -p
+
+mysql 명령어
+msql -u root -p
+show databases;
+create database test123;
+		(이름)
+use 이름; < 으로접속
+create table dept 
+	deptno int(12),
+	dname varchar(14),
+	loc varchar(14);
+desc dept; <칼럼명 보여주는것
+
+insert into dept(deptno, dname, loc) values(10,'Account', 'Seoul');
+데이터추가
+
+select * from dept> dept 모든 정보 보기 암튼 그럼 
+
+
+
+
+
+
+
+
+
+	

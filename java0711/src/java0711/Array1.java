@@ -29,4 +29,5 @@ public class Array1 {
 	}
 }
 
-
+//int add(int[]scores){...}
+//result

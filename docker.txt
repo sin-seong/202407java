@@ -5,6 +5,8 @@
  docker rm 아이디 삭제
  docker image ls  이미지 리스트
  docker image rm 아이디 이미지 삭제
+docker rm $(docker ps -aq)
+
 
 docker run --name apa000ex2 -p 8880:80 httpd 
            생성 이름지정 (컨테이너명)     포트     이미지이름
@@ -22,6 +24,8 @@ docker cp index.html apa000ex2:/usr/local/apache2/htdocs
 
 docker run --name mysql000ex7 -dit -e MYSQL_ROOT_PASSWORD=1234 mysql
 mysql 컨테이너 생성
+
+docker run --name mysql0710 -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=spring5fs -e MYSQL_USER=spring5 -e MYSQL_PASSWORD=spring5 mysql:8.0.36
 
 접속
 docker exec -it mysql000ex7 mysql -u root -p

@@ -29,9 +29,7 @@ public class Project1 {
 					System.out.println(member);
 			
 			}
-			
 		
-
 		System.out.println("총회원수:"+list.size());
 		Member member = null; //로그인된 현재 사용자 <<
 		Scanner scanner = new Scanner(System.in);

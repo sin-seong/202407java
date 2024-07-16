@@ -27,7 +27,10 @@ public class Course {
 		return "Course [transcriptss=" + transcripts + ", name=" + name + "]";
 	}
 	
-	public void setTranscrpts(Vector<Transcript> transcript) {
+	public Vector<Transcript> getTranscripts() {
+		return transcripts;
+	}
+	public void setTranscrpts(Vector<Transcript> transcripts) {
 		this.transcripts = transcripts;
 	}
 	

@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 public class Cal extends JFrame implements ActionListener{
 	
+	
 	JLabel la1 = new JLabel("계산기");
 	JLabel la2 = new JLabel("계산결과:");
 	JTextField tf1 = new JTextField(10);
@@ -66,14 +67,23 @@ public class Cal extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 //		System.out.println(e.getSource());
+		double a = Double.parseDouble(tf1.getText());
+		double b = Double.parseDouble(tf2.getText());
+		double result = 0.0;
+		
 		if(e.getSource()==jb1) {
-			System.out.println(tf1+"+"+tf2 +"="+la2);
+			result = a + b;
+			la2.setText(String.valueOf("결과:"+result));
+//			
 		}else if(e.getSource()==jb2) {
-			System.out.println("-");
+			result = a - b;
+			la2.setText(String.valueOf("결과:"+result));
 		}else if(e.getSource()==jb3) {
-			System.out.println("*");
+			result = a * b;
+			la2.setText(String.valueOf("결과:"+result));
 		}else if(e.getSource()==jb4) {
-			System.out.println("/");
+			result = a / b;
+			la2.setText(String.valueOf("결과:"+result));;
 		}
 		
 	}

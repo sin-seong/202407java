@@ -1,4 +1,4 @@
-package java0719;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,9 +21,9 @@ public class Ex5_dept2 {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(URL, "root", "mysql");
 			System.out.println("Mysql 접속 성공!");
-			stmt = con.createStatement();
-			int num = stmt.executeUpdate(sql);
-			System.out.println("테이블 삽입! "+ num);
+//			stmt = con.createStatement();
+//			int num = stmt.executeUpdate(sql);
+//			System.out.println("테이블 삽입! "+ num);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

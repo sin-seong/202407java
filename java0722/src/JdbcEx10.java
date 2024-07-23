@@ -35,12 +35,12 @@ public class JdbcEx10 {
 				System.out.println(rsmd.getColumnName(i));
 			}
 
-			while(rs.next()) {
-				int deptno = rs.getInt("deptno");
-				String dname = rs.getString("dname");
-				String loc = rs.getString("loc");
-				System.out.printf("%d %s %s\n", deptno, dname, loc);
-				}
+//			while(rs.next()) {
+//				int deptno = rs.getInt("deptno");
+//				String dname = rs.getString("dname");
+//				String loc = rs.getString("loc");
+//				System.out.printf("%d %s %s\n", deptno, dname, loc);
+//				}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

@@ -1,4 +1,4 @@
-package swingjdbc;
+package thread3;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -8,17 +8,18 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
 
 public class ViewDept extends JFrame {
 	JButton jb = new JButton("조회");
@@ -29,6 +30,12 @@ public class ViewDept extends JFrame {
 	JFrame jfr;
 
 	ViewDept() {
+//		JPanel jp3 = new JPanel();
+//		JLabel lb1 = new JLabel();
+//		jp3.add(lb1);
+		
+//		TooTime tooTime = new TooTime();
+//		tooTime.start();
 		jfr = this;
 		String URL = "jdbc:mysql://localhost:3307/spring5fs";	
 		try {
@@ -52,9 +59,17 @@ public class ViewDept extends JFrame {
 		jp2.add(ja);
 		con.add(jp2, BorderLayout.CENTER);
 		
+		WinTime winTime = new WinTime();
+		Thread thread = new Thread(winTime);
+		thread.start();
+		con.add(winTime, BorderLayout.SOUTH);
 		
 		
-		this.setTitle("1");
+		
+		
+		
+		
+//		this.setTitle("1");
 		this.setBounds(1200,200,500,300);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,42 +80,28 @@ public class ViewDept extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				String str = jf.getText();
-//				String sql = String.format("select deptno,dname,loc from dept where loc like '%%%s%%'", str);
+				String sql = String.format("select deptno,dname,loc from dept where loc like '%%%s%%'", str);
 				
 				try {
-					 ResultSet rs = stmt.executeQuery(str);
+					ResultSet rs = stmt.executeQuery(sql);
+					ja.setText("");
 
-			            ResultSetMetaData rsmd = rs.getMetaData();
-			            int columnsNumber = rsmd.getColumnCount();
-			            while (rs.next()) {
-			                for (int i = 1; i <= columnsNumber; i++) {
-			                    if (i > 1) ja.append(",  ");
-			                    String columnValue = rs.getString(i);
-			                    ja.append(rsmd.getColumnName(i) + ": " + columnValue);
-			                }
-			                ja.setText("");
-			            }
-					
-					
-//					ResultSet rs = stmt.executeQuery(sql);
-//					ja.setText("");
-
-//					boolean flag = true;
-//					while(rs.next()) {
-//						flag = false;
-//						int deptno = rs.getInt("deptno");
-//						String dname = rs.getString("dname");
-//						String loc = rs.getString("loc");
-//						ja.append(String.format("%d %s %s\n", deptno, dname, loc));
-//						
-//					}
-//					if(flag) {
-//						JOptionPane.showMessageDialog(jfr, "해당자료없습니다.", "정보", JOptionPane.QUESTION_MESSAGE);
-//					}
+					boolean flag = true;
+					while(rs.next()) {
+						flag = false;
+						int deptno = rs.getInt("deptno");
+						String dname = rs.getString("dname");
+						String loc = rs.getString("loc");
+						ja.append(String.format("%d %s %s\n", deptno, dname, loc));
+						
+					}
+					if(flag) {
+						JOptionPane.showMessageDialog(jfr, "해당자료없습니다.", "정보", JOptionPane.QUESTION_MESSAGE);
+					}
 					
 				} catch (SQLException e2) {
 					// TODO Auto-generated catch block
-					JOptionPane.showMessageDialog(jfr, "해당자료없습니다.", "정보", JOptionPane.QUESTION_MESSAGE);
+					e2.printStackTrace();
 					
 				}
 				}
@@ -117,5 +118,45 @@ public class ViewDept extends JFrame {
 		
 		
 	}
+	class Mypanel extends JPanel{
+		JLabel lb1;
+		Mypanel(){
+		lb1 = new JLabel("2");
+		this.add(lb1);
+	}
+
+	
+	
+	
+					}
+	class WinTime extends JPanel implements Runnable{
+		JLabel lb1;
+		
+		public WinTime() {
+			lb1 = new JLabel("테스트");
+			this.add(lb1);
+			
+		}
+
+		@Override
+		public void run() {
+			JFrame frame = new JFrame();
+			Mypanel mypanel = new Mypanel();
+				for (;;) {
+					LocalTime localTime = LocalTime.now();
+					String str = String.format("%d:%d:%d\n", 
+							 localTime.getHour(), localTime.getMinute(), localTime.getSecond());
+//					ViewDept.this.setTitle(str);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+				}
+		}
+		
+	}
 }
+}
+
 

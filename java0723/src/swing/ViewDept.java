@@ -1,4 +1,4 @@
-package swingjdbc;
+package swing;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -29,6 +29,8 @@ public class ViewDept extends JFrame {
 	JFrame jfr;
 
 	ViewDept() {
+		
+		
 		jfr = this;
 		String URL = "jdbc:mysql://localhost:3307/spring5fs";	
 		try {
@@ -72,32 +74,18 @@ public class ViewDept extends JFrame {
 
 			            ResultSetMetaData rsmd = rs.getMetaData();
 			            int columnsNumber = rsmd.getColumnCount();
+			            ja.setText("");
 			            while (rs.next()) {
 			                for (int i = 1; i <= columnsNumber; i++) {
 			                    if (i > 1) ja.append(",  ");
 			                    String columnValue = rs.getString(i);
 			                    ja.append(rsmd.getColumnName(i) + ": " + columnValue);
 			                }
-			                ja.setText("");
+			                ja.append("\n");
 			            }
 					
 					
-//					ResultSet rs = stmt.executeQuery(sql);
-//					ja.setText("");
-
-//					boolean flag = true;
-//					while(rs.next()) {
-//						flag = false;
-//						int deptno = rs.getInt("deptno");
-//						String dname = rs.getString("dname");
-//						String loc = rs.getString("loc");
-//						ja.append(String.format("%d %s %s\n", deptno, dname, loc));
-//						
-//					}
-//					if(flag) {
-//						JOptionPane.showMessageDialog(jfr, "해당자료없습니다.", "정보", JOptionPane.QUESTION_MESSAGE);
-//					}
-					
+//					
 				} catch (SQLException e2) {
 					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(jfr, "해당자료없습니다.", "정보", JOptionPane.QUESTION_MESSAGE);

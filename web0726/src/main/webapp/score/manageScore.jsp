@@ -127,14 +127,12 @@ while(rs.next()){
 %>
 
 <tr>
-<td><a href="?find=<%=num %>"><%=num%><a></td><td><%=name %></td><td><%=kor %></td><td><%=eng %></td><td><%=math %></td>
+<td><a href="?find=<%=num %>"><%=num%></a></td><td><%=name %></td><td><%=kor %></td><td><%=eng %></td><td><%=math %></td>
 <td><%=total %></td><td><%=avg %></td><td><button type="button" onclick="location.href='?delete=<%=num%>' ">삭제</button>
 </tr>
 <%
 }
 %>
-
-
 
 </table>
 

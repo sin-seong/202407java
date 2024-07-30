@@ -80,7 +80,7 @@ if(num != null){
 		pstmt.setString(5, math);
 		int ret = pstmt.executeUpdate();
 	}
-}
+}	
 
 %>    
 <!DOCTYPE html>

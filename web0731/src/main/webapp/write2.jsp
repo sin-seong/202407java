@@ -1,8 +1,11 @@
+<%@page import="board.BoardDTO"%>
+<%@page import="board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
-
+String num = request.getParameter("num");
+BoardDAO dao = new BoardDAO();
+BoardDTO dto = dao.getOne(Integer.parseInt(num));
 
 
 
@@ -28,18 +31,18 @@
         <tr>
             <th>제목</th>
             <td><input type="text" name="title"  maxlength="80"
-                       value="<%=title %>">
+                       value="<%=dto.getTitle() %>">
             </td>
         </tr>
         <tr>
             <th>작성자</th>
             <td><input type="text" name="writer" maxlength="20"
-                       value="<%=writer %>">
+                       value="<%=dto.getWriter() %>">
             </td>
         </tr>
         <tr>
             <th>내용</th>
-            <td><textarea name="content" rows="10"><%=content %></textarea>
+            <td><textarea name="content" rows="10"><%=dto.getContent() %></textarea>
             </td>
         </tr>
     </table>

@@ -6,7 +6,7 @@
 <%
 String num = request.getParameter("num");
 BoardDAO dao = new BoardDAO();
-List<BoardDTO> Up = dao.getboarList();
+
 
 %>
 

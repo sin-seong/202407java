@@ -19,12 +19,10 @@ AccountDTO newAc = new AccountDTO(0,username,password, email, 0);
 dao.regAcc(newAc);
 
 
-Cookie regCookie = new Cookie("username", username);
-regCookie.setMaxAge(60 * 60);
-response.addCookie(regCookie);
+
 out.println("<script type='text/javascript'>");
 out.println("alert('헬로 " + username + "님 회원가입을 환영합니다');");
-out.println("window.location.href = 'index.jsp';");
+out.println("window.location.href = 'login.jsp';");
 out.println("</script>");
 
 

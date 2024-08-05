@@ -1,41 +1,44 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="module.SocialDAO"%>
+<%@page import="module.SocialDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
-
-
+    <%
+String id = request.getParameter("id");
+SocialDAO dao = new SocialDAO();
+SocialDTO dto = dao.getOne(Integer.parseInt(id));
+    
+    
+    %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <style>
-        table { width:680px; text-align:center; }
-        th    { width:100px; background-color:cyan; }
+        table { width:1000px; text-align:center; }
+        th    { width:100px; background-color:gray; }
         input[type=text], textarea { width:100%; }
     </style>
 </head>
 <body>
 
-<form method="post" action="insert.jsp">
+<form method="post" action="update.jsp">
+	<input type = "hidden"name="id" value ="<%=id %>">
     <table>
         <tr>
             <th>제목</th>
             <td><input type="text" name="title"  maxlength="80"
-                       value="">
+                       value="<%=dto.getTitle() %>">
             </td>
         </tr>
         <tr>
             <th>작성자</th>
-            <td><input type="text" name="writer" maxlength="20"
-                       value="">
+            <td><input type="text" name="name" maxlength="20"
+                       value="<%=dto.getName() %>">
             </td>
         </tr>
         <tr>
             <th>내용</th>
-            <td><textarea name="content" rows="10"></textarea>
+            <td><textarea name="text" rows="10"><%=dto.getText() %></textarea>
             </td>
         </tr>
     </table>

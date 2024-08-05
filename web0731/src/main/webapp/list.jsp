@@ -14,7 +14,7 @@ List<BoardDTO> list = dao.getboarList();
     <meta charset="UTF-8">
     <style>
         table     { width:680px; text-align:center; }
-        th        { background-color:cyan; }
+        th        { background-color:gray; }
         
         .num      { width: 80px; }
         .title    { width:230px; }

@@ -6,6 +6,11 @@ docker run --name mysql0710 -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL
 docker exec -it mysql0710 mysql -u root -p
 
 
+docker search oracle
+
+docker pull oracleinanutshell/oracle-xe-11g
+
+docker run -d -p 1521:1521 oracleinanutshell/oracle-xe-11g
 -- --------------------------------------------------------
 
 --

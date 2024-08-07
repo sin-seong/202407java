@@ -1,0 +1,58 @@
+도커 명령어
+
+ docker ps -a  리스트 보기
+ docker stop 아이디 중단
+ docker rm 아이디 삭제
+ docker image ls  이미지 리스트
+ docker image rm 아이디 이미지 삭제
+docker rm $(docker ps -aq)
+
+
+docker run --name apa000ex2 -p 8880:80 httpd 
+           생성 이름지정 (컨테이너명)     포트     이미지이름
+컨테이너 생성
+
+docker run --name apa000ex2 -d -p 8880:80 httpd (백그라운드 추가)
+
+docker start  컨테이너명
+
+파일> 유저 > 로컬 아파치> htdocs
+
+양방향복사 가능
+docker cp apa000ex2:/usr/local/apache2/htdocs/index.html .
+docker cp index.html apa000ex2:/usr/local/apache2/htdocs
+
+docker run --name mysql000ex7 -dit -e MYSQL_ROOT_PASSWORD=1234 mysql
+mysql 컨테이너 생성
+
+docker run --name mysql0711 -p 3307:3306 -d -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=du -e MYSQL_USER=spring5 -e MYSQL_PASSWORD=spring5 mysql:8.0.36
+
+접속
+docker exec -it mysql000ex7 mysql -u root -p
+
+mysql 명령어
+msql -u root -p
+show databases;
+create database test123;
+		(이름)
+use 이름; < 으로접속
+create table dept 
+	deptno int(12),
+	dname varchar(14),
+	loc varchar(14);
+desc dept; <칼럼명 보여주는것
+
+insert into dept(deptno, dname, loc) values(10,'Account', 'Seoul');
+데이터추가
+
+select * from dept> dept 모든 정보 보기 암튼 그럼 
+
+
+
+
+
+
+
+
+
+	

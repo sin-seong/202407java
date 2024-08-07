@@ -1,0 +1,39 @@
+깃허브 연동 하는 방법
+ cmd에 cd \
+git init
+git add .
+git commit -m "할말"
+git remote add origin https://github.com/sin-seong/202407java.git
+git push -u origin master
+
+계정 연동
+git config --global user.email "이메일"
+git config --global user.name "아이디"
+
+이클립스 프젝 생성시 모듈체크해제
+
+제어판> 사용자 계정> window자격 증명 >github 데이터 있음
+
+
+원격 패스워드 패스 문구
+ssh-keygen -t rsa -b 4096
+
+
+슈퍼유저 권한으로 업데이트 
+sudo apt-get update
+
+각종툴 
+sudo apt-get install net-tools iputils-ping nano vim git maven
+
+source ~/.bashrc등록
+java -version 자바버전
+javac -version 자바씨 버전
+
+컵모양 자바 다운 Extension Pack For Java
+
+
+오픈자바 다운
+sudo apt install openjdk-17-jdk
+
+.bashrc > 맨아랫줄
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk=amd64"

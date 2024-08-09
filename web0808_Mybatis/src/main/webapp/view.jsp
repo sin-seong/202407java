@@ -5,8 +5,7 @@
 <%
 String num = request.getParameter("num");
 BoardDAO dao = new BoardDAO();
-dao.increaseHits(Integer.parseInt(num));
 BoardDTO dto = dao.getOne(Integer.parseInt(num));
-request.setAttribute("dto",dto);
+request.setAttribute("view",dto);
 %>
 <jsp:forward page="view_view.jsp"/>

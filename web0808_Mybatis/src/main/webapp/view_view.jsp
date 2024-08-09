@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-<C:forEach var="dto" items ="${dao}" >
+<C:forEach var="dto" items ="${dto}" >
 
 
 <table>

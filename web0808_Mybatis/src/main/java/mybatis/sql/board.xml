@@ -5,4 +5,5 @@
 	<select id="listBoard" resultType="board.BoardDTO">
 		select * FROM board
 	</select>
+	
 </mapper>

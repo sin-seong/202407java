@@ -163,7 +163,7 @@
       
       
       
-      <Context docBase="web0812_Mybatis" path="/MyBatisShop" reloadable="true" source="org.eclipse.jst.jee.server:web0812_Mybatis"/></Host>
+      <Context docBase="web0813_fileup" path="/web0813_fileup" reloadable="true" source="org.eclipse.jst.jee.server:web0813_fileup"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.board.db.BoardMapper">
+	
+	<resultMap id="BoardResultMap" type="com.board.db.BoardDto">
+	<id property="num" column="num"/>
+	<result property="writer" column="writer"/>
+	<result property="title" column="title"/>
+	<result property="content" column="content"/>
+	<result property="regtime" column="regtime"/>
+	<result property="hits" column="hits"/>
+	</resultMap>
+	
+    <select id="getNumRecords" resultType="int">
+        SELECT count(*) from board
+    </select>
+
+    <select id="selectList" resultMap="BoardResultMap">
+        SELECT * FROM board order by num desc
+        LIMIT #{start}, #{listSize}
+    </select>
+    <select id="selectOne" parameterType="int" resultMap="BoardResultMap">
+    	SELECT * FROM board WHERE num = #{num}
+    </select>
+    
+	<insert id="insertOne" parameterType="com.board.db.BoardDto">
+	insert into borad (writer, title, content, regtime,hits)
+	VALUES (#{writer}, #{title}, #{content}, #{regtime},0)
+	</insert>
+
+    
+    <update id="updateOne" parameterType="com.board.db.BoardDto">
+        UPDATE board
+        SET writer = #{writer}, title = #{title}, content = #{content},
+        regtime = #{regtime}
+        where num = #{num}
+    </update>
+
+    <delete id="deleteone" parameterType="int">
+        DELETE FROM board WHERE num = #{num}
+    </delete>
+</mapper>

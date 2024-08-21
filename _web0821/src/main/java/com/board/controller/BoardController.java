@@ -6,9 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.board.db.*;
 import com.board.service.BoardService;
+import com.board.service.UserService;
 
 @WebServlet("/")
 public class BoardController extends HttpServlet {
@@ -31,16 +33,18 @@ public class BoardController extends HttpServlet {
         String conPath = request.getContextPath();
         String com = uri.substring(conPath.length());
 
+        
+
         // 주어진 URL에 따라 지정된 동작 수행
 
-      
- 
+
         if (com.equals("/home") || com.equals("/")) {
-                   view = "syHome.jsp";
-        
-     
+           
+          
+            view = "syHome.jsp";
        
-        } else if (com.equals("/list")) {
+        } 
+        	if (com.equals("/list")) {
             String tmp = request.getParameter("page");
             int pageNo = (tmp != null && tmp.length() > 0)
                     ? Integer.parseInt(tmp) : 1;
@@ -58,7 +62,9 @@ public class BoardController extends HttpServlet {
             request.setAttribute("msg", new BoardService().getMsg(num));
             view = "view.jsp";
 
+            
         } else if (com.equals("/write")){
+
             String tmp = request.getParameter("num");
             int num = (tmp != null && tmp.length() > 0)
                     ? Integer.parseInt(tmp) : 0;
@@ -76,7 +82,7 @@ public class BoardController extends HttpServlet {
             view = "write.jsp";
 
         } else if (com.equals("/insert")){
-            request.setCharacterEncoding("utf-8");
+        	request.setCharacterEncoding("utf-8");
             String writer  = request.getParameter("writer" );
             String title   = request.getParameter("title"  );
             String content = request.getParameter("content");
@@ -89,8 +95,8 @@ public class BoardController extends HttpServlet {
                 request.setAttribute("errorMessage", e.getMessage());
                 view = "errorBack.jsp";
             }
-
         } else if (com.equals("/update")){
+
             request.setCharacterEncoding("utf-8");
             int num = Integer.parseInt(request.getParameter("num"));
             String writer  = request.getParameter("writer" );
@@ -107,27 +113,61 @@ public class BoardController extends HttpServlet {
             }
 
         } else if (com.equals("/delete")){
+
             int num = Integer.parseInt(request.getParameter("num"));
 
             new BoardService().deleteMsg(num);
             view = "redirect:list";
-        } else if(com.equals("/log")) {
-        	view = "loginForm.jsp";
+           
+        
+        }else if(com.equals("/reg")) {
+        	
+        	UserDto dto = new UserDto();
+            String action = "regok";
+            
+            request.setAttribute("reg", dto);
+            request.setAttribute("ok", action);
+            
+        	view = "register.jsp";
+        	
+        }else if(com.equals("/regok")) {
+        	
+        	request.setCharacterEncoding("utf-8");
+           
+            String name  = request.getParameter("name");
+            String ssn   = request.getParameter("ssn");
+            String email = request.getParameter("email");
+            
+            try {
+            	new UserService().regMsg(name, ssn, email);
+            	view = "redirect:list";
+            	
+            } catch(Exception e) {
+                request.setAttribute("errorMessage", e.getMessage());
+                view = "errorBack.jsp";
         }
-
+          
+        }
+        
         // view에 담긴 문자열에 따라 포워딩 또는 리다이렉팅
         if (view.startsWith("redirect:")) {
             response.sendRedirect(view.substring(9));
         } else {
             request.getRequestDispatcher(view).forward(request, response);
+        
         }
         
+        }    
     
-    }
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
                                   throws ServletException, IOException {
+
+    	 
         doGet(request, response);
     }
 }
+
+
+    

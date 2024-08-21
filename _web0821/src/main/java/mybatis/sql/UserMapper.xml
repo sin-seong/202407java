@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+	<select id="authenticate" parameterType="map" resultType="Integer">
+        SELECT COUNT(*) 
+        FROM userid 
+        WHERE email = #{email} AND ssn = #{ssn}
+    </select>
+    <insert id="insertOne" parameterType="com.board.db.UserDto">
+		insert into userid (name, email,ssn)
+		VALUES (#{name}, #{email}, #{ssn})
+	</insert>
+	<select id="getUserByEmail" parameterType = "map" >
+	select count(*) 
+	from userid
+	where email = #{email}
+	</select>
+</mapper>

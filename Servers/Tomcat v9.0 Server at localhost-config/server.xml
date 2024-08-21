@@ -163,7 +163,7 @@
       
       
       
-      <Context docBase="_web0820" path="/_web0820" reloadable="true" source="org.eclipse.jst.jee.server:_web0820"/><Context docBase="periable" path="/periable" reloadable="true" source="org.eclipse.jst.jee.server:periable"/></Host>
+      <Context docBase="_web0821" path="/_web0820" reloadable="true" source="org.eclipse.jst.jee.server:_web0821"/></Host>
     </Engine>
   </Service>
 </Server>

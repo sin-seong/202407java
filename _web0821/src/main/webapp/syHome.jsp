@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -23,7 +24,7 @@
                 <li><a href="#">DEPARTMENT</a></li>
                 <li><a href="#">GALLERY</a></li>
                 <li><a href="https://www.youtube.com/@LCK">YOUTUBE</a></li>
-                <li><a href="list">카뮤니티</a></li>
+                <li><a href="${pageContext.request.contextPath}/list">카뮤니티</a></li>
                 <li><a href="#">LOCATION</a></li>
             </ul>
 
@@ -31,12 +32,16 @@
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">도움말</a></li>
               
+			   
 			       <li><a></a><il>
-			    <li><a href ="#">로그아웃</a></li>
-			  
-                <li><a href="log">로그인</a></li>
+			   <c:if test="${userLoggedIn}">
+			    <li><a href ="#">${customInfo.name}님, 로그아웃</a></li>
+			    </c:if>
+			  <c:if test="${!userLoggedId}">
+                <li><a href="${pageContext.request.contextPath}/log">로그인</a></li>
+               </c:if>
                
-                <li><a href="reg">Join</a></li>
+                <li><a href="${pageContext.request.contextPath}/reg">Join</a></li>
                 <li><a href="#">Sitemap</a></li>
             </ul>
         </div>

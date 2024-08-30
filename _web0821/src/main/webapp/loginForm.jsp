@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko" data-bs-theme="auto">
-  <head><script src="assets/js/color-modes.js"></script>
+  <head><script src="${pageContext.request.contextPath}/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="assets/dist/css/bootstrap.min.css?" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/dist/css/bootstrap.min.css?" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -100,7 +100,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="sign-in.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/sign-in.css" rel="stylesheet">
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -156,8 +156,8 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form>
-    <img class="mb-4" src="assets/brand/door-open.svg" alt="" width="72" height="57">
+  <form method=post>
+    <img class="mb-4" src="${pageContext.request.contextPath}/assets/brand/door-open.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">로귄 ㄱ</h1>
 	
 <!--  	<div class="form-floating">
@@ -183,7 +183,7 @@
     <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
   </form>
 </main>
-<script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>

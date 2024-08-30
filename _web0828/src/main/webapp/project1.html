@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" name="id" placeholder="ID"><br>
+        <input type="text" name="title" placeholder="Title"><br>
+        <input type="text" name="author" placeholder="author"><br>
+        <button onclick="createPost()">create</button>
+        <button onclick="readPost()">read</button><br>
+        <button onclick="updatePost()">update</button>
+        <button onclick="deletePost()">delete</button>
+    </div>
+    <ul class="print-data"></ul>
+    <script>
+        const apiUrl ="http://localhost:3000/posts";
+        function readPost(){
+            fetch(apiUrl)
+            .then(Response=>Response.json())
+            .then(data=>{
+                const printdata = document.querySelector('.print-data');
+                printdata.innerHTML='';
+                data.forEach(post=>{
+                    printdata.innerHTML +=`<li>id:${post.id}<br> title:${post.title}<br>author:${post.author}</li>`;
+                });
+            })
+            .catch(error => console.error('Error:',error));
+        }
+        function createPost(){
+            const inputId = document.querySelector('input[name=id]').value;
+            const inputTitle = document.querySelector('input[name=title]').value;
+            const inputAuthor = document.querySelector('input[name=author]').value;
+            
+            const postParams = {
+                id: inputId,
+                title:inputTitle,
+                author: inputAuthor
+            };
+            fetch(apiUrl,{
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(postParams)
+            })
+            .then(Response => Response.json())
+            .then(data=>{
+                console.log('Post created:',data);
+                readPost();
+            })
+            .catch(error =>console.error('Error:',error));
+        }
+        function updatePost(){
+            const inputId = document.querySelector('input[name=id]').value;
+            const inputTitle = document.querySelector('input[name=title]').value;
+            const inputAuthor = document.querySelector('input[name=author]').value;
+
+            const postParams = {
+                id: inputId,
+                title:inputTitle,
+                author: inputAuthor
+        };
+        fetch(`${apiUrl}/${inputId}`,{
+            method: 'PUT',
+            headers:{
+                'Content-Text':'application/json'
+            },
+            body : JSON.stringify(postParams)
+        })
+        .then(Response=>Response.json())
+        .then(data=>{
+            console.log('Post update:',data);
+            readPost();
+        })
+        .catch(error =>console.error('Error:',error));
+    }
+        function deletePost(){
+            const inputId = document.querySelector('input[name=id]').value;
+
+            fetch(`${apiUrl}/${inputId}`,{
+                method: 'DELETE'
+            })
+            .then(Response=>Response.json())
+            .then(data=>{
+                console.log('Post deleted:',data);
+                readPost();
+            })
+            .catch(error=>console.error('Error:',error));
+        }
+    </script>
+</body>
+</html>

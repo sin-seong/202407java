@@ -163,7 +163,7 @@
       
       
       
-      <Context docBase="_mvc0910" path="/_mvc0910" reloadable="true" source="org.eclipse.jst.jee.server:_mvc0910"/></Host>
+      <Context docBase="chap17" path="/chap17" reloadable="true" source="org.eclipse.jst.jee.server:chap17"/></Host>
     </Engine>
   </Service>
 </Server>

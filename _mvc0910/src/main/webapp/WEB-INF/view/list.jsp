@@ -38,7 +38,7 @@
     <tr>
         <td>${msg.num}</td>
         <td style="text-align:left;">
-            <a href="view?num=${msg.num}&page=${param.page}">
+            <a href="view.do?num=${msg.num}&page=${param.page}">
                 ${msg.title}
             </a>
         </td>
@@ -66,7 +66,7 @@
 </div>
 
 <br>
-<input type="button" value="글쓰기" onclick="location.href='write'">
+<input type="button" value="글쓰기" onclick="location.href='write.do'">
 
 </body>
 </html>
